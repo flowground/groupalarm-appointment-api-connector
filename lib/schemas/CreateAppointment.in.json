@@ -1,0 +1,76 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "Appointment contains the information of a single appointment",
+            "type": "object",
+            "properties": {
+                "creator": {
+                    "type": "integer",
+                    "format": "int64",
+                    "x-go-name": "CreatorID"
+                },
+                "description": {
+                    "type": "string",
+                    "x-go-name": "Description"
+                },
+                "endDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "x-go-name": "EndDate"
+                },
+                "id": {
+                    "type": "integer",
+                    "format": "int64",
+                    "x-go-name": "ID"
+                },
+                "name": {
+                    "type": "string",
+                    "x-go-name": "Name"
+                },
+                "organizationID": {
+                    "type": "integer",
+                    "format": "int64",
+                    "x-go-name": "OrganizationID"
+                },
+                "participants": {
+                    "type": "array",
+                    "items": {
+                        "description": "AppointmentParticipant describes an invited user inside of an appointment",
+                        "type": "object",
+                        "properties": {
+                            "appointmentID": {
+                                "type": "integer",
+                                "format": "int64",
+                                "x-go-name": "AppointmentID"
+                            },
+                            "feedback": {
+                                "description": "AppointmentFeedbackStatus describes the current feedback status of an user",
+                                "type": "integer",
+                                "format": "int64",
+                                "x-go-package": "groupalarm.com/go/appointment/api/services"
+                            },
+                            "feedbackMessage": {
+                                "type": "string",
+                                "x-go-name": "FeedbackMessage"
+                            },
+                            "userID": {
+                                "type": "integer",
+                                "format": "int64",
+                                "x-go-name": "UserID"
+                            }
+                        },
+                        "x-go-package": "groupalarm.com/go/appointment/api/services"
+                    },
+                    "x-go-name": "Participants"
+                },
+                "startDate": {
+                    "type": "string",
+                    "format": "date-time",
+                    "x-go-name": "StartDate"
+                }
+            },
+            "x-go-package": "groupalarm.com/go/appointment/api/services"
+        }
+    }
+}

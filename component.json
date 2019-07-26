@@ -1,0 +1,214 @@
+{
+    "title": "groupalarm Appointment API",
+    "description": "The appointment service implements all appointment and reminder functions for GroupAlarm\n\n# Authentication\n\n<!-- ReDoc-Inject: <security-definitions> -->",
+    "docsUrl": "",
+    "url": "https://app.groupalarm.com/api/v1",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://app.groupalarm.com/api/v1",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "auth_API_Token": {
+                "label": "API-TOKEN (API_Token)",
+                "viewClass": "TextFieldView",
+                "note": "To use this API, you need an API-Token from the RBAC settings of your GroupAlarm organization. Place the token inside the HTTP-Header `API-Token` for every request, otherwise the API will return an \"401 Unauthorized\" error for your request."
+            },
+            "auth_Personal-Access-Token": {
+                "label": "Personal-Access-Token (Personal-Access-Token)",
+                "viewClass": "TextFieldView",
+                "note": "To use this API, you need a Personal Access Token from your profile settings. Place the token inside the HTTP-Header `Personal-Access-Token` for every request, otherwise the API will return an \"401 Unauthorized\" error for your request."
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "CreateAppointment": {
+            "main": "./lib/actions/CreateAppointment.js",
+            "title": "CreateAppointment",
+            "description": "Create an appointment with the passed parameters",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateAppointment.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetAppointment": {
+            "main": "./lib/actions/GetAppointment.js",
+            "title": "GetAppointment",
+            "description": "Get specific appointment with the requested id",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetAppointment.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpdateAppointment": {
+            "main": "./lib/actions/UpdateAppointment.js",
+            "title": "UpdateAppointment",
+            "description": "Update an appointment with the passed parameters",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdateAppointment.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "DeleteAppointment": {
+            "main": "./lib/actions/DeleteAppointment.js",
+            "title": "DeleteAppointment",
+            "description": "Deletes the appointment with the passed id",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/DeleteAppointment.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpdateAppointmentParticipantFeedback": {
+            "main": "./lib/actions/UpdateAppointmentParticipantFeedback.js",
+            "title": "UpdateAppointmentParticipantFeedback",
+            "description": "Update an appointment with the passed parameters",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdateAppointmentParticipantFeedback.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetPersonalAppointments": {
+            "main": "./lib/actions/GetPersonalAppointments.js",
+            "title": "GetPersonalAppointments",
+            "description": "Get paginated personal appointments",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetPersonalAppointments.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetPersonalICal": {
+            "main": "./lib/actions/GetPersonalICal.js",
+            "title": "GetPersonalICal",
+            "description": "Returns all personal appointments in ical/ics format",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetPersonalICal.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpsertPersonalToken": {
+            "main": "./lib/actions/UpsertPersonalToken.js",
+            "title": "UpsertPersonalToken",
+            "description": "Get personal ical token",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpsertPersonalToken.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "UpsertPersonalToken_1": {
+            "main": "./lib/actions/UpsertPersonalToken_1.js",
+            "title": "UpsertPersonalToken",
+            "description": "Creates or updates the personal ical token",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpsertPersonalToken_1.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetOrganizationAppointments": {
+            "main": "./lib/actions/GetOrganizationAppointments.js",
+            "title": "GetOrganizationAppointments",
+            "description": "Get paginated personal appointments",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetOrganizationAppointments.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

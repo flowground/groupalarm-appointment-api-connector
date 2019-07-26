@@ -1,0 +1,36 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "required": true,
+            "type": "int64"
+        },
+        "requestBody": {
+            "description": "AppointmentParticipant describes an invited user inside of an appointment",
+            "type": "object",
+            "properties": {
+                "appointmentID": {
+                    "type": "integer",
+                    "format": "int64",
+                    "x-go-name": "AppointmentID"
+                },
+                "feedback": {
+                    "description": "AppointmentFeedbackStatus describes the current feedback status of an user",
+                    "type": "integer",
+                    "format": "int64",
+                    "x-go-package": "groupalarm.com/go/appointment/api/services"
+                },
+                "feedbackMessage": {
+                    "type": "string",
+                    "x-go-name": "FeedbackMessage"
+                },
+                "userID": {
+                    "type": "integer",
+                    "format": "int64",
+                    "x-go-name": "UserID"
+                }
+            },
+            "x-go-package": "groupalarm.com/go/appointment/api/services"
+        }
+    }
+}
